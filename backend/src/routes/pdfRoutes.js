@@ -12,7 +12,7 @@ router.post("/upload", upload.single("pdf"), async (req, res) => {
     if (!req.file) {
       return res.status(400).json({ error: "No file uploaded." });
     }
-    const dataBuffer = fs.readFileSync(req.file.path);
+    const dataBuffer = req.file.buffer;
     const pdf = await pdfjsLib.getDocument({ data: dataBuffer }).promise;
     let extractedText = "";
 
