@@ -17,7 +17,7 @@ const YouTubeAnalyzer = () => {
     }
     setLoading(true);
     try {
-      const res = await axios.post("http://localhost:5001/api/youtube/analyze", {
+      const res = await axios.post("https://back-x6zy.onrender.com/api/youtube/analyze", {
         url,
         userId
       });

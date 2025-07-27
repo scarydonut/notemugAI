@@ -49,7 +49,7 @@ router.post("/extract-keywords", async (req, res) => {
   const { text } = req.body;
 
   try {
-    const response = await axios.post("http://localhost:7000/extract", { text });
+    const response = await axios.post("https://keyword-yudi.onrender.com/extract", { text });
 
     res.json(response.data);
   } catch (err) {

@@ -22,7 +22,7 @@ router.post("/upload", upload.single("pdf"), async (req, res) => {
       const strings = content.items.map(item => item.str);
       extractedText += strings.join(" ") + "\n";
     }
-    const keywordsRes = await axios.post("http://localhost:5001/api/notes/extract-keywords", { text: extractedText });
+    const keywordsRes = await axios.post("https://back-x6zy.onrender.com/api/notes/extract-keywords", { text: extractedText });
     const { keywords, suggestions } = keywordsRes.data;
 
     const summary = await generateSummary(extractedText);

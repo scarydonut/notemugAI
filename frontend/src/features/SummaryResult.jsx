@@ -21,7 +21,7 @@ const SummaryResult = ({ content }) => {
   const handleExplain = async (word) => {
     setLoading(true);
     try {
-      const res = await axios.post("http://localhost:5001/api/ai/define", {
+      const res = await axios.post("https://back-x6zy.onrender.com/api/ai/define", {
         phrase: word,
       });
       setDefinition(res.data.explanation);

@@ -16,17 +16,17 @@ const NotesDashboard = ({ user }) => {
   }, [user]);
 
   const fetchNotes = async () => {
-    const res = await axios.get(`http://localhost:5001/api/notes/user/${user._id}`);
+    const res = await axios.get(`https://back-x6zy.onrender.com/api/notes/user/${user._id}`);
     setNotes(res.data);
   };
 
   const handleDelete = async (id) => {
-    await axios.delete(`http://localhost:5001/api/notes/${id}`);
+    await axios.delete(`https://back-x6zy.onrender.com/api/notes/${id}`);
     fetchNotes();
   };
 
   const saveNoteEdits = async () => {
-    await axios.put(`http://localhost:5001/api/notes/${editingNote._id}`, editingNote);
+    await axios.put(`https://back-x6zy.onrender.com/api/notes/${editingNote._id}`, editingNote);
     setEditingNote(null);
     fetchNotes();
   };

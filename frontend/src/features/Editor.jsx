@@ -39,15 +39,15 @@ const Editor = ({ user: propUser }) => {
   const handleSummarize = async () => {
     setLoadingSummary(true);
     try {
-      const res = await axios.post("http://localhost:5001/api/ai/summarize", { text });
+      const res = await axios.post("https://back-x6zy.onrender.com/api/ai/summarize", { text });
       setSummary(res.data.summary);
 
       if (currentNoteId) {
-        await axios.put(`http://localhost:5001/api/notes/${currentNoteId}`, {
+        await axios.put(`https://back-x6zy.onrender.com/api/notes/${currentNoteId}`, {
           summary: res.data.summary,
         });
       } else {
-        const saveRes = await axios.post("http://localhost:5001/api/notes/save", {
+        const saveRes = await axios.post("https://back-x6zy.onrender.com/api/notes/save", {
           userId: getUserId(),
           title: text.substring(0, 30),
           text,
@@ -68,15 +68,15 @@ const Editor = ({ user: propUser }) => {
   const handleQuiz = async () => {
     setLoadingQuiz(true);
     try {
-      const res = await axios.post("http://localhost:5001/api/ai/quiz", { text });
+      const res = await axios.post("https://back-x6zy.onrender.com/api/ai/quiz", { text });
       setQuiz(res.data.quiz);
 
       if (currentNoteId) {
-        await axios.put(`http://localhost:5001/api/notes/${currentNoteId}`, {
+        await axios.put(`https://back-x6zy.onrender.com/api/notes/${currentNoteId}`, {
           quiz: res.data.quiz,
         });
       } else {
-        const saveRes = await axios.post("http://localhost:5001/api/notes/save", {
+        const saveRes = await axios.post("https://back-x6zy.onrender.com/api/notes/save", {
           userId: getUserId(),
           title: text.substring(0, 30),
           text,

@@ -8,7 +8,7 @@ const Login = ({ setUser }) => {
     try {
       const result = await signInWithPopup(auth, provider);
       const token = await result.user.getIdToken();
-      const res = await axios.post("http://localhost:5001/api/auth/google", { token });
+      const res = await axios.post("https://back-x6zy.onrender.com/api/auth/google", { token });
       setUser(res.data.user);
     } catch (err) {
       console.error("Login failed:", err);

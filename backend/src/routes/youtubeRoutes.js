@@ -8,13 +8,13 @@ const router = express.Router();
 router.post("/analyze", async (req, res) => {
   const { url, userId } = req.body;
   try {
-    const ytTranscript = await axios.post("http://localhost:7002/transcribe", { url });
+    const ytTranscript = await axios.post("https://youtube-3456.onrender.com/transcribe", { url });
     const extractedText = ytTranscript.data.text;
 
     const [summary, quiz, keywordData] = await Promise.all([
       generateSummary(extractedText),
       generateQuiz(extractedText),
-      axios.post("http://localhost:5001/api/notes/extract-keywords", { text: extractedText })
+      axios.post("https://back-x6zy.onrender.com/api/notes/extract-keywords", { text: extractedText })
     ]);
 
     const { keywords, suggestions } = keywordData.data;

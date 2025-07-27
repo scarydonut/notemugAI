@@ -23,7 +23,7 @@ const PdfUploader = () => {
 
     setUploading(true);
     try {
-      const res = await axios.post("http://localhost:5001/api/pdf/upload", formData, {
+      const res = await axios.post("https://back-x6zy.onrender.com/api/pdf/upload", formData, {
         headers: { "Content-Type": "multipart/form-data" },
       });
 
