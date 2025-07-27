@@ -29,7 +29,7 @@ router.post("/upload", upload.single("pdf"), async (req, res) => {
     const quiz = await generateQuiz(extractedText);
 
     const savedNote = await Note.create({
-      userId: mongoose.Types.ObjectId(userId),
+      userId: req.body.userId,
       title: req.file.originalname,
       text: extractedText,
       summary,
