@@ -1,6 +1,6 @@
 import express from "express";
 import fs from "fs";
-import * as pdfjsLib from "pdfjs-dist/legacy/build/pdf.js";
+import pdfjsLib from 'pdfjs-dist/legacy/build/pdf.js';
 import { upload } from "../middleware/upload.js";
 import Note from "../models/Note.js";
 import { generateSummary, generateQuiz } from "../utils/ai.js";
