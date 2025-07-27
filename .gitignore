@@ -1,0 +1,30 @@
+# === FRONTEND ===
+/frontend/node_modules/
+/frontend/build/
+/frontend/.env
+
+# Logs
+/frontend/npm-debug.log*
+/frontend/yarn-debug.log*
+/frontend/yarn-error.log*
+
+# System files
+/frontend/.DS_Store
+
+# === BACKEND ===
+/backend/node_modules/
+/backend/venv/
+/backend/yt-env/
+/backend/__pycache__/
+/backend/.env
+
+# Logs
+/backend/*.log
+
+# System files
+/backend/.DS_Store
+
+# === GLOBAL ===
+*.log
+.env
+.DS_Store
