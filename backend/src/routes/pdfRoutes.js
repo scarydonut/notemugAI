@@ -1,6 +1,6 @@
 import express from "express";
 import fs from "fs";
-import pdfParse from "pdf-parse";
+import * as pdfjsLib from "pdfjs-dist/legacy/build/pdf.js";
 import { upload } from "../middleware/upload.js";
 import Note from "../models/Note.js";
 import { generateSummary, generateQuiz } from "../utils/ai.js";
@@ -13,8 +13,15 @@ router.post("/upload", upload.single("pdf"), async (req, res) => {
       return res.status(400).json({ error: "No file uploaded." });
     }
     const dataBuffer = fs.readFileSync(req.file.path);
-    const pdfData = await pdfParse(dataBuffer);
-    const extractedText = pdfData.text;
+    const pdf = await pdfjsLib.getDocument({ data: dataBuffer }).promise;
+    let extractedText = "";
+
+    for (let i = 1; i <= pdf.numPages; i++) {
+      const page = await pdf.getPage(i);
+      const content = await page.getTextContent();
+      const strings = content.items.map(item => item.str);
+      extractedText += strings.join(" ") + "\n";
+    }
     const keywordsRes = await axios.post("http://localhost:5001/api/notes/extract-keywords", { text: extractedText });
     const { keywords, suggestions } = keywordsRes.data;
 
