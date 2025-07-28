@@ -47,14 +47,24 @@ router.put("/:id", async (req, res) => {
 
 router.post("/extract-keywords", async (req, res) => {
   const { text } = req.body;
+  if (!text || typeof text !== "string" || text.trim().length < 10) {
+    return res.status(400).json({ error: "Invalid or empty text provided." });
+  }
 
   try {
     const response = await axios.post("https://keyword-yudi.onrender.com/extract", { text });
+    if (!response.data?.keywords || !response.data?.suggestions) {
+      return res.status(500).json({ error: "Invalid response from keyword API." });
+    }
+    console.log("✅ Keyword extraction success:", response.data);
 
-    res.json(response.data);
+    res.json({
+      keywords: response.data.keywords,
+      suggestions: response.data.suggestions,
+    });
   } catch (err) {
-    console.error("Keyword extraction error:", err.message);
+    console.error("❌ Keyword extraction error:", err.response?.data || err.message);
     res.status(500).json({ error: "Keyword extraction failed." });
   }
 });
-export default router;
+
