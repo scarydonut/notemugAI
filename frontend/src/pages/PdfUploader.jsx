@@ -8,8 +8,16 @@ const PdfUploader = () => {
   const [uploading, setUploading] = useState(false);
   const [result, setResult] = useState(null);
 
-  const user = JSON.parse(localStorage.getItem("user"));
-  const userId = user?._id || localStorage.getItem("userId");
+  const user = JSON.parse(localStorage.getItem("notegenius-user"));
+const userId = user && user._id ? user._id : null;
+
+console.log("📤 Uploading for userId:", userId);
+
+if (!userId) {
+  alert("You're not logged in. Please log in first.");
+  return;
+}
+
 
   const handleUpload = async () => {
     if (!file) {
