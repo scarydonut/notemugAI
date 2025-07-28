@@ -9,6 +9,7 @@ const Login = ({ setUser }) => {
       const result = await signInWithPopup(auth, provider);
       const token = await result.user.getIdToken();
       const res = await axios.post("https://back-x6zy.onrender.com/api/auth/google", { token });
+      localStorage.setItem("notegenius-user", JSON.stringify(res.data.user));
       setUser(res.data.user);
     } catch (err) {
       console.error("Login failed:", err);

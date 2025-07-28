@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Trash2, Pencil, Calendar, RefreshCw } from "lucide-react";
 import { getRevisionPlan } from "../api/reviseNote";
-
 import { Card, CardHeader, CardTitle, CardContent, CardFooter } from "../components/ui/card";
 import { Button } from "../components/ui/button";
 import { Badge } from "../components/ui/badge";
