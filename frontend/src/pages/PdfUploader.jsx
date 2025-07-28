@@ -8,7 +8,7 @@ const PdfUploader = () => {
   const [uploading, setUploading] = useState(false);
   const [result, setResult] = useState(null);
 
-  const user = JSON.parse(localStorage.getItem("notegenius-user"));
+  const user = JSON.parse(localStorage.getItem("user"));
   const userId = user?._id || localStorage.getItem("userId");
 
   const handleUpload = async () => {
