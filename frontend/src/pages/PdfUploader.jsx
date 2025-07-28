@@ -9,7 +9,8 @@ const PdfUploader = () => {
   const [result, setResult] = useState(null);
 
   const user = JSON.parse(localStorage.getItem("notegenius-user"));
-const userId = user && user._id ? user._id : null;
+const userId = user?._id || localStorage.getItem("userId");
+
 
 console.log("📤 Uploading for userId:", userId);
 
