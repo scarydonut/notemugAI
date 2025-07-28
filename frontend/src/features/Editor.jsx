@@ -7,6 +7,7 @@ import { Skeleton } from "../components/ui/skeleton";
 import { useNavigate } from "react-router-dom";
 import SummaryResult from "./SummaryResult";
 import QuizResult from "./QuizResult";
+import { getUserId } from "../utils/getUserId";
 
 const Editor = ({ user: propUser }) => {
   const [text, setText] = useState("");
@@ -32,23 +33,19 @@ const Editor = ({ user: propUser }) => {
     }
   }, [propUser]);
 
-  const getUserId = () => {
-    return user?._id || localStorage.getItem("userId");
-  };
-
   const handleSummarize = async () => {
     setLoadingSummary(true);
     try {
       const res = await axios.post("https://back-x6zy.onrender.com/api/ai/summarize", { text });
       setSummary(res.data.summary);
-
+       const userId = getUserId();
       if (currentNoteId) {
         await axios.put(`https://back-x6zy.onrender.com/api/notes/${currentNoteId}`, {
           summary: res.data.summary,
         });
       } else {
         const saveRes = await axios.post("https://back-x6zy.onrender.com/api/notes/save", {
-          userId: getUserId(),
+          userId,
           title: text.substring(0, 30),
           text,
           summary: res.data.summary,
@@ -70,14 +67,14 @@ const Editor = ({ user: propUser }) => {
     try {
       const res = await axios.post("https://back-x6zy.onrender.com/api/ai/quiz", { text });
       setQuiz(res.data.quiz);
-
+      const userId = getUserId();
       if (currentNoteId) {
         await axios.put(`https://back-x6zy.onrender.com/api/notes/${currentNoteId}`, {
           quiz: res.data.quiz,
         });
       } else {
         const saveRes = await axios.post("https://back-x6zy.onrender.com/api/notes/save", {
-          userId: getUserId(),
+          userId,
           title: text.substring(0, 30),
           text,
           summary: "",

@@ -2,14 +2,14 @@ import React, { useState } from "react";
 import axios from "axios";
 import { Button } from "../components/ui/button";
 import SummaryResult from "../features/SummaryResult";
+import { getUserId } from "../utils/getUserId";
 
 const PdfUploader = () => {
   const [file, setFile] = useState(null);
   const [uploading, setUploading] = useState(false);
   const [result, setResult] = useState(null);
 
-  const user = JSON.parse(localStorage.getItem("notegenius-user"));
-const userId = user?._id || localStorage.getItem("userId");
+  const userId = getUserId();
 
   const handleUpload = async () => {
     if (!file) {

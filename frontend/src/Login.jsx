@@ -10,6 +10,8 @@ const Login = ({ setUser }) => {
       const token = await result.user.getIdToken();
       const res = await axios.post("https://back-x6zy.onrender.com/api/auth/google", { token });
       setUser(res.data.user);
+      localStorage.setItem("notegenius-user", JSON.stringify(res.data.user));
+      localStorage.setItem("userId", res.data.user._id);
     } catch (err) {
       console.error("Login failed:", err);
     }
