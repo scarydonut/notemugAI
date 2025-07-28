@@ -68,3 +68,4 @@ router.post("/extract-keywords", async (req, res) => {
   }
 });
 
+export default router;
