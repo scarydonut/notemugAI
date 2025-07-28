@@ -11,15 +11,6 @@ const PdfUploader = () => {
   const user = JSON.parse(localStorage.getItem("notegenius-user"));
 const userId = user?._id || localStorage.getItem("userId");
 
-
-console.log("📤 Uploading for userId:", userId);
-
-if (!userId) {
-  alert("You're not logged in. Please log in first.");
-  return;
-}
-
-
   const handleUpload = async () => {
     if (!file) {
       alert("Please select a PDF file first.");
