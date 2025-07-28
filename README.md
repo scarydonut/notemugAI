@@ -1,6 +1,6 @@
-# NoteGenius AI
+# NoteMug AI
 
-NoteGenius AI is a smart, browser-based note-taking assistant that lets you upload PDFs, generate summaries, create flashcards, and extract keywords with AI. Designed for students and professionals, it helps you digest and retain information efficiently.
+NoteMug AI is a smart, browser-based note-taking assistant that lets you upload PDFs, generate summaries, create flashcards, and extract keywords with AI. Designed for students and professionals, it helps you digest and retain information efficiently.
 
 ## Features
 
