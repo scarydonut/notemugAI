@@ -87,12 +87,14 @@ Frontend:
 - [React](https://react.dev/)
 - [ShadCN UI](https://ui.shadcn.com/)
 - [Tailwind CSS](https://tailwindcss.com/)
+
 Backend:
 - [Node.js](https://nodejs.org/en)
 - [Express](https://expressjs.com/)
 - [MongoDB](https://www.mongodb.com/)
 - [Mongoose](https://mongoosejs.com/)
 - [OpenRouter AI](https://openrouter.ai/)
+
 Python Microservice:
 - [Flask](https://flask.palletsprojects.com/en/stable/)
 - [Yake](https://pypi.org/project/yake/)
