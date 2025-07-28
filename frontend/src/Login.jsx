@@ -27,22 +27,17 @@ const Login = ({ setUser }) => {
       <img
         src="/mcq.JPG"
         alt="MCQ"
-        className="absolute top-6 right-26 w-20 sm:w-36 md:w-48 lg:w-64 xl:w-105 rounded-2xl shadow-lg z-0 animate-float-rev transition-transform transform hover:scale-110"
+        className="absolute top-6 right-10 w-20 sm:w-36 md:w-40 lg:w-64 xl:w-105 rounded-2xl shadow-lg z-0 animate-float-rev transition-transform transform hover:scale-110"
       />
       <img
         src="/pdf.JPG"
         alt="PDF"
-        className="absolute bottom-6 right-40 w-20 sm:w-36 md:w-48 lg:w-64 xl:w-110 rounded-2xl shadow-lg z-0 animate-float transition-transform transform hover:scale-110"
+        className="absolute bottom-6 right-36 w-20 sm:w-36 md:w-48 lg:w-64 xl:w-110 rounded-2xl shadow-lg z-0 animate-float transition-transform transform hover:scale-110"
       />
       <img
         src="/smart.JPG"
         alt="Smart Notes"
         className="absolute bottom-6 left-66 w-20 sm:w-36 md:w-48 lg:w-64 xl:w-80 rounded-2xl shadow-lg z-0 animate-float-slow transition-transform transform hover:scale-110"
-      />
-      <img
-        src="/youtube.JPG"
-        alt="YouTube"
-        className="absolute top-1/2 left-1/2 transform -translate-x-105 -translate-y-95 w-24 sm:w-36 md:w-48 lg:w-64 xl:w-105 rounded-2xl shadow-lg z-0 animate-float transition-transform hover:scale-110"
       />
       <div className="bg-white/90 p-8 md:p-12 rounded-2xl shadow-2xl backdrop-blur-md max-w-lg w-full text-center border border-blue-300 z-10">
         <h1 className="text-4xl font-extrabold text-indigo-900 mb-2">Welcome to</h1>

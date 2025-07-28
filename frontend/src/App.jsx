@@ -5,7 +5,6 @@ import Login from "./Login";
 import Editor from "./features/Editor";
 import NotesDashboard from "./features/NotesDashboard";
 import PdfUploader from "./pages/PdfUploader";
-import YouTubeAnalyzer from "./pages/YouTubeAnalyzer";
 function App() {
   const [user, setUser] = useState(null);
   const [showSidebar, setShowSidebar] = useState(false);
@@ -65,7 +64,6 @@ function App() {
           <Route path="/editor" element={<Editor user={user} />} />
           <Route path="/notes" element={<NotesDashboard user={user} />} />
           <Route path="/upload-pdf" element={<PdfUploader />} />
-          <Route path="/analyze-youtube" element={<YouTubeAnalyzer />} />
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>
       </div>

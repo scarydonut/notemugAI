@@ -6,7 +6,6 @@ import authRoutes from "./routes/auth.js";
 import noteRoutes from "./routes/noteRoutes.js";
 import aiRoutes from "./routes/ai.js";
 import pdfRoutes from "./routes/pdfRoutes.js";
-import youtubeRoutes from "./routes/youtubeRoutes.js";
 dotenv.config();
 
 const app = express();
@@ -19,7 +18,6 @@ app.use("/api/auth", authRoutes);
 app.use("/api/notes", noteRoutes);
 app.use("/uploads", express.static("uploads"));
 app.use("/api/pdf", pdfRoutes);
-app.use("/api/youtube", youtubeRoutes);
 const PORT = process.env.PORT || 5001;
 connectDB();
 app.listen (PORT, () =>{

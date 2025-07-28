@@ -92,7 +92,6 @@ const Editor = ({ user: propUser }) => {
     }
   };
 
-
   return (
     <div className="max-w-5xl mx-auto p-6 bg-gradient-to-b from-blue-50 via-white to-green-50 rounded-lg shadow-lg">
       <h2 className="text-4xl font-extrabold text-blue-800 mb-6 text-center">🧠 NoteGenius Editor</h2>
@@ -133,12 +132,6 @@ const Editor = ({ user: propUser }) => {
           onClick={() => navigate("/upload-pdf")}
         >
           📤 Upload PDF Notes
-        </Button>
-        <Button
-          className="bg-yellow-600 hover:bg-yellow-700 text-white"
-          onClick={() => navigate("/analyze-youtube")}
-        >
-          📺 YouTube Video Analysis
         </Button>
 
       </div>
