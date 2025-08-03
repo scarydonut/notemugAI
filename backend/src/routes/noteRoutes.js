@@ -3,6 +3,19 @@ import Note from "../models/Note.js";
 import axios from "axios";
 const router = express.Router();
 
+async function retryKeywordExtraction(text, retries = 3, delay = 5000) {
+  for (let attempt = 1; attempt <= retries; attempt++) {
+    try {
+      const res = await axios.post("https://keyword-yudi.onrender.com/extract", { text });
+      return res.data;
+    } catch (err) {
+      if (attempt === retries) throw err;
+      console.warn(`🔁 Retry ${attempt}: Keyword API failed. Retrying in ${delay / 1000}s...`);
+      await new Promise((resolve) => setTimeout(resolve, delay));
+    }
+  }
+}
+ 
 router.post("/save", async (req, res) => {
   try {
     const newNote = new Note(req.body);
@@ -47,25 +60,29 @@ router.put("/:id", async (req, res) => {
 
 router.post("/extract-keywords", async (req, res) => {
   const { text } = req.body;
+
   if (!text || typeof text !== "string" || text.trim().length < 10) {
     return res.status(400).json({ error: "Invalid or empty text provided." });
   }
 
   try {
-    const response = await axios.post("https://keyword-yudi.onrender.com/extract", { text });
-    if (!response.data?.keywords || !response.data?.suggestions) {
+    const data = await retryKeywordExtraction(text);
+
+    if (!data.keywords || !data.suggestions) {
       return res.status(500).json({ error: "Invalid response from keyword API." });
     }
-    console.log("✅ Keyword extraction success:", response.data);
+
+    console.log("✅ Keyword extraction success:", data);
 
     res.json({
-      keywords: response.data.keywords,
-      suggestions: response.data.suggestions,
+      keywords: data.keywords,
+      suggestions: data.suggestions,
     });
   } catch (err) {
-    console.error("❌ Keyword extraction error:", err.response?.data || err.message);
-    res.status(500).json({ error: "Keyword extraction failed." });
+    console.error("❌ Final keyword extraction error:", err.response?.data || err.message);
+    res.status(500).json({ error: "Keyword extraction failed after retries." });
   }
 });
+
 
 export default router;
